@@ -1,92 +1,94 @@
-# React Vitest Template
+# Donor Stories
 
-A starter template for building React apps with Vite. Includes Vitest for unit testing and
-a hefty .gitignore file.
+This project is a React application that allows users to submit and view donor stories. The app includes a form for entering a donor's name, email, photo, and description. Submitted stories are displayed in a feed on the main page. 
 
-# Requirements
+## Features
 
-Node 20 or greater.
+- **Form Submission**: Users can fill out a form to submit a donor's story, including the donor's name, email, photo URL, and a brief description.
+- **Story Feed**: Submitted stories are displayed in a feed, showing the donor's name, email, photo, and description.
+- **Toggle Form**: A button on the main page allows users to show or hide the form for submitting new stories.
 
-## Usage
+## Project Structure
 
-```
-mkdir your-app-name
-cd your-app-name
-npx degit criesbeck/react-vitest
-npm install
-```
-If the third step hangs after printing ``> cloned criesbeck/react-vitest#HEAD``, 
-just control-C to exit then run ``npm install``.
+- `App.jsx`: The main component that manages the state and visibility of the form and feed.
+- `Form.jsx`: The component that renders the form and handles the submission of new donor stories.
+- `Feed.jsx`: The component that displays the submitted stories in a feed.
+- `App.css`: The CSS file that contains the styling for the application.
 
-## Test
+## Getting Started
 
-Verify that the initial app works. Run
+### Prerequisites
 
-```
-npm start
-```
+Make sure you have Node.js and npm installed. You can download them from [nodejs.org](https://nodejs.org/).
 
-and open the URL displayed.
+### Installation
 
-Verify that the unit tests work with
+1. **Clone the repository:**
 
-```
-npm test
-```
+   ```bash
+   git clone https://github.com/your-username/donor-stories.git
+   cd donor-stories
+   ```
 
-Two tests should run and pass. 
+2. **Install dependencies:**
 
-## Scripts
+   ```bash
+   npm install
+   ```
 
-**package.json** defines the following scripts:
+3. **Run the development server:**
 
-| Script           | Description                                         |
-| -----------------| --------------------------------------------------- |
-| npm start        | Runs the app in the development mode.               |
-| npm run dev      | Runs the app in the development mode.               |
-| npm run build    | Builds the app for production to the `dist` folder. |
-| npm run serve    | Serves the production build from the `dist` folder. |
-| npm test         | Starts a Jest-like test loop                        |
-| npm run coverage | Runs the tests, displays code coverage results      |
+   ```bash
+   npm run dev
+   ```
 
+   This will start the Vite development server, and you should be able to see the application running in your browser at `http://localhost:3000`.
 
-## Git
+### Usage
 
-If everything is working, set up [your local and remote repositories](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git).
+1. **Add a new donor story:**
+   - Click the "Add Entry" button to display the form.
+   - Fill out the form with the donor's name, email, photo URL, and description.
+   - Click the "Submit" button to add the story to the feed.
 
-## Folder Structure
+2. **View donor stories:**
+   - Submitted stories will appear in the feed below the form.
+   - Each story displays the donor's name, email, photo, and description.
 
-```
-your-app-name
-├── node_modules
-├── public
-│   ├── favicon.svg
-│   └── robots.txt
-└── src
-    ├── App.css
-    ├── App.jsx
-    ├── index.css
-    ├── index.jsx
-    └── logo.svg
-├── .gitignore
-├── index.html
-├── package.json
-├── README.md
-├── vite.config.js
-```
+### File Descriptions
 
-## Credits
+- **`App.jsx`**:
+  - Manages the state of the application.
+  - Contains the main layout, including the header, toggle button, form, and feed.
+  - Handles form submission and updates the feed.
 
-React-Vitest built and maintained by [Chris Riesbeck](https://github.com/criesbeck).
+- **`Form.jsx`**:
+  - Renders the form for submitting new donor stories.
+  - Manages local state for form inputs.
+  - Calls the `onSubmit` function passed via props to submit the form data.
 
-Inspired by [SafdarJamal/vite-template-react](https://github.com/SafdarJamal/vite-template-react).
-Expanded to include Vitest and some sample tests.
+- **`Feed.jsx`**:
+  - Displays a list of submitted donor stories.
+  - Receives the list of stories via props and renders each story.
 
-Thanks to Rich Harris for [degit](https://www.npmjs.com/package/degit).
+- **`App.css`**:
+  - Contains styles for the application, including layout, form styling, button styling, and feed item styling.
 
-Gitignore file created with [the Toptal tool](https://www.toptal.com/developers/gitignore/api/react,firebase,visualstudiocode,macos,windows).
+## Contributing
 
+If you would like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
 
 ## License
 
-This project is licensed under the terms of the [MIT license](./LICENSE).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- Thanks to the open-source community for providing great tools and libraries.
+- Created with React and Vite.
