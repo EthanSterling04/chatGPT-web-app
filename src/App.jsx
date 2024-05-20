@@ -1,43 +1,27 @@
-import { useState } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Form from './Form';
+import Feed from './Feed';
 import './App.css';
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [showForm, setShowForm] = useState(false);
+  const [feedData, setFeedData] = useState([]);
+
+  const handleFormSubmit = (data) => {
+    setFeedData([data, ...feedData]);
+    setShowForm(false);
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount(count => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test hot module replacement (HMR).
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
+    <div className="app-container">
+      <header className="header">
+        <h1>Donor Stories</h1>
       </header>
+      <button className="toggle-form-button" onClick={() => setShowForm(!showForm)}>
+        {showForm ? 'Close Form' : 'Add Entry'}
+      </button>
+      {showForm && <Form onSubmit={handleFormSubmit} />}
+      <Feed data={feedData} />
     </div>
   );
 };
