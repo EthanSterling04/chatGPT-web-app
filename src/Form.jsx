@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Form = ({ onSubmit }) => {
+const Form = ({ onSubmit, editData }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [photo, setPhoto] = useState('');
   const [description, setDescription] = useState('');
 
+  useEffect(() => {
+    if (editData) {
+      setName(editData.name);
+      setEmail(editData.email);
+      setPhoto(editData.photo);
+      setDescription(editData.description);
+    } else {
+      setName('');
+      setEmail('');
+      setPhoto('');
+      setDescription('');
+    }
+  }, [editData]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = { name, email, photo, description };
+    const formData = { id: editData ? editData.id : Date.now(), name, email, photo, description };
     onSubmit(formData);
-    setName('');
-    setEmail('');
-    setPhoto('');
-    setDescription('');
   };
 
   return (
@@ -34,7 +44,7 @@ const Form = ({ onSubmit }) => {
         <label>Description:</label>
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit">{editData ? 'Update' : 'Submit'}</button>
     </form>
   );
 };
